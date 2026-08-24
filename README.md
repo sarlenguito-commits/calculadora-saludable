@@ -20,7 +20,7 @@ sugeridas según tu objetivo, además de un catálogo completo de recetas para e
 HTML, CSS, JavaScript (vanilla, sin librerías ni frameworks)
 
 ## Ver el proyecto online
-[Link acá una vez que actives GitHub Pages]
+(https://sarlenguito-commits.github.io/calculadora-saludable/)
 
 ## Aviso
 Esta calculadora está basada en fórmulas y lineamientos de conocimiento público
