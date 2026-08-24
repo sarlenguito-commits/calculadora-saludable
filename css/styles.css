@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Variables de color === */
+:root {
+    --verde-primario: #4CAF50;
+    --verde-oscuro: #2E7D32;
+    --verde-claro: #A5D6A7;
+    --amarillo-sol: #FFC107;
+    --naranja-proteina: #FF7043;
+    --azul-carbos: #42A5F5;
+    --texto: #2B2B2B;
+    --fondo: #163B22;
+    --card-bg: #FFFFFF;
+}
+
+body {
+    background-color: var(--fondo);
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cpath%20d='M20%205%20L23%2015%20L33%2015%20L25%2021%20L28%2031%20L20%2025%20L12%2031%20L15%2021%20L7%2015%20L17%2015%20Z'%20fill='rgba(255,255,255,0.06)'/%3E%3Ccircle%20cx='95'%20cy='25'%20r='6'%20fill='rgba(255,255,255,0.06)'/%3E%3Cline%20x1='95'%20y1='8'%20x2='95'%20y2='14'%20stroke='rgba(255,255,255,0.06)'%20stroke-width='2'/%3E%3Cline%20x1='95'%20y1='36'%20x2='95'%20y2='42'%20stroke='rgba(255,255,255,0.06)'%20stroke-width='2'/%3E%3Cline%20x1='78'%20y1='25'%20x2='84'%20y2='25'%20stroke='rgba(255,255,255,0.06)'%20stroke-width='2'/%3E%3Cline%20x1='106'%20y1='25'%20x2='112'%20y2='25'%20stroke='rgba(255,255,255,0.06)'%20stroke-width='2'/%3E%3Cg%20fill='rgba(255,255,255,0.06)'%3E%3Ccircle%20cx='40'%20cy='95'%20r='5'/%3E%3Ccircle%20cx='49'%20cy='90'%20r='5'/%3E%3Ccircle%20cx='49'%20cy='100'%20r='5'/%3E%3Ccircle%20cx='31'%20cy='90'%20r='5'/%3E%3Ccircle%20cx='31'%20cy='100'%20r='5'/%3E%3C/g%3E%3Cpath%20d='M120%20120%20L123%20128%20L131%20128%20L124%20133%20L127%20141%20L120%20136%20L113%20141%20L116%20133%20L109%20128%20L117%20128%20Z'%20fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    color: var(--texto);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    min-height: 100vh;
+}
+
+/* === Header con sol y bosque, mismo verde oscuro que el resto de la página === */
+header {
+    position: relative;
+    background: var(--fondo);
+    color: white;
+    text-align: center;
+    padding: 40px 20px 70px;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+header p {
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.95;
+    position: relative;
+    z-index: 2;
+}
+
+/* El sol: grande y centrado arriba del título, con rayos puntiagudos hechos con conic-gradient */
+.sol {
+    position: relative;
+    margin: 0 auto 10px;
+    width: 90px;
+    height: 90px;
+}
+
+.sol::before {
+    content: '';
+    position: absolute;
+    inset: -35px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(var(--amarillo-sol) 0deg 9deg,
+            transparent 9deg 30deg);
+}
+
+.sol::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--amarillo-sol);
+}
+
+/* === Bosque: arbolitos hechos con clip-path, distintos tamaños === */
+.bosque {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.arbol {
+    background: var(--verde-primario);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.arbol.chico {
+    width: 28px;
+    height: 34px;
+}
+
+.arbol.mediano {
+    width: 38px;
+    height: 48px;
+}
+
+.arbol.grande {
+    width: 46px;
+    height: 60px;
+}
+
+/* El pasto: una franja ondulada verde oscuro al pie del header */
+.pasto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: var(--verde-primario);
+    clip-path: polygon(0% 100%,
+            5% 40%, 10% 100%,
+            15% 40%, 20% 100%,
+            25% 40%, 30% 100%,
+            35% 40%, 40% 100%,
+            45% 40%, 50% 100%,
+            55% 40%, 60% 100%,
+            65% 40%, 70% 100%,
+            75% 40%, 80% 100%,
+            85% 40%, 90% 100%,
+            95% 40%, 100% 100%);
+}
+
+/* === Main === */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 30px 20px;
+}
+
+/* === Formulario === */
+.formulario {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.formulario h2 {
+    color: var(--verde-oscuro);
+    margin-bottom: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+}
+
+.campo input,
+.campo select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #C8E6C9;
+    font-size: 1rem;
+}
+
+#calcular-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--verde-primario);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+#calcular-btn:hover {
+    background: var(--verde-oscuro);
+}
+
+/* === Resultados === */
+
+/* === Resultados: grilla horizontal en vez de columna larga === */
+.resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 880px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--verde-primario);
+}
+
+/* Tarjeta informativa (misma para cualquier persona, no es un resultado calculado):
+   ocupa todo el ancho y usa un acento de color distinto para diferenciarla */
+.card.informativa {
+    grid-column: 1 / -1;
+    border-left: 4px solid var(--amarillo-sol);
+    background: #FFFBEF;
+}
+
+.card h3 {
+    color: var(--verde-oscuro);
+    margin-bottom: 10px;
+}
+
+.numero-grande {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--verde-primario);
+}
+
+.chico {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 6px;
+}
+
+/* === Barra de IMC === */
+.barra-imc {
+    position: relative;
+    display: flex;
+    height: 14px;
+    border-radius: 7px;
+    overflow: hidden;
+    margin: 12px 0 4px;
+}
+
+.segmento {
+    flex: 1;
+}
+
+.segmento.bajo {
+    background: #90CAF9;
+}
+
+.segmento.normal {
+    background: var(--verde-primario);
+}
+
+.segmento.sobrepeso {
+    background: var(--amarillo-sol);
+}
+
+.segmento.obesidad {
+    background: #E57373;
+}
+
+.marcador {
+    position: absolute;
+    top: -4px;
+    width: 4px;
+    height: 22px;
+    background: var(--texto);
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+/* === Barra de macros === */
+.barra-macros {
+    display: flex;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.macro-proteina {
+    background: var(--naranja-proteina);
+}
+
+.macro-carbos {
+    background: var(--azul-carbos);
+}
+
+.macro-grasas {
+    background: var(--amarillo-sol);
+}
+
+.lista-macros,
+.lista-plato {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.punto {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.punto.proteina {
+    background: var(--naranja-proteina);
+}
+
+.punto.carbos {
+    background: var(--azul-carbos);
+}
+
+.punto.grasas {
+    background: var(--amarillo-sol);
+}
+
+.punto.verduras {
+    background: var(--verde-primario);
+}
+
+/* === Plato visual: circulo con conic-gradient === */
+.plato {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    background: conic-gradient(var(--verde-primario) 0% 50%,
+            var(--naranja-proteina) 50% 75%,
+            var(--azul-carbos) 75% 100%);
+    border: 4px solid white;
+    box-shadow: 0 0 0 2px #E0E0E0;
+}
+
+/* === Enfoques de horarios de comida === */
+.enfoque {
+    border-left: 3px solid var(--verde-primario);
+    padding-left: 12px;
+    margin-top: 14px;
+}
+
+.enfoque h4 {
+    color: var(--verde-oscuro);
+    margin-bottom: 4px;
+}
+
+.enfoque p {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 0.75rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.creditos {
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+}
+
+/* === Sección "Todas las recetas" === */
+.todas-recetas {
+    width: 100%;
+    max-width: 880px;
+    text-align: center;
+}
+
+.todas-recetas h2 {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.lista-recetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    text-align: left;
+}
+
+.receta {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--verde-primario);
+}
+
+.receta h4 {
+    color: var(--verde-oscuro);
+    margin-bottom: 6px;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Saludable</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="sol"></div>
+        <h1>Calculadora Saludable</h1>
+        <p>Ingresá tus datos y obtené una guía general de peso saludable, calorías, macros y hábitos.</p>
+        <div class="bosque">
+            <div class="arbol chico"></div>
+            <div class="arbol grande"></div>
+            <div class="arbol mediano"></div>
+            <div class="arbol grande"></div>
+            <div class="arbol chico"></div>
+        </div>
+        <div class="pasto"></div>
+    </header>
+
+    <main>
+        <section class="formulario">
+            <h2>Tus datos</h2>
+
+            <div class="campo">
+                <label for="sexo">Sexo</label>
+                <select id="sexo">
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="edad">Edad (años)</label>
+                <input type="number" id="edad" min="15" max="100" placeholder="Ej: 32">
+            </div>
+
+            <div class="campo">
+                <label for="peso">Peso (kg)</label>
+                <input type="number" id="peso" min="30" max="300" placeholder="Ej: 78">
+            </div>
+
+            <div class="campo">
+                <label for="altura">Altura (cm)</label>
+                <input type="number" id="altura" min="100" max="250" placeholder="Ej: 175">
+            </div>
+
+            <div class="campo">
+                <label for="actividad">Nivel de actividad física</label>
+                <select id="actividad">
+                    <option value="1.2">Sedentario (poco o nada de ejercicio)</option>
+                    <option value="1.375">Ligero (ejercicio 1-3 días/semana)</option>
+                    <option value="1.55">Moderado (ejercicio 3-5 días/semana)</option>
+                    <option value="1.725">Intenso (ejercicio 6-7 días/semana)</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="objetivo">Objetivo</label>
+                <select id="objetivo">
+                    <option value="bajar">Bajar de peso</option>
+                    <option value="mantener">Mantener peso</option>
+                    <option value="ganar">Ganar masa muscular</option>
+                </select>
+            </div>
+
+            <button id="calcular-btn">Calcular</button>
+        </section>
+
+        <section class="resultado" id="resultado" hidden>
+
+            <div class="card">
+                <h3>Tu IMC</h3>
+                <p class="numero-grande" id="imc-numero">-</p>
+                <p id="imc-categoria">-</p>
+                <div class="barra-imc">
+                    <div class="segmento bajo"></div>
+                    <div class="segmento normal"></div>
+                    <div class="segmento sobrepeso"></div>
+                    <div class="segmento obesidad"></div>
+                    <div class="marcador" id="imc-marcador"></div>
+                </div>
+                <p class="chico" id="imc-rango">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Calorías diarias sugeridas</h3>
+                <p class="numero-grande" id="calorias-numero">-</p>
+                <p class="chico">Gasto calórico total estimado (TDEE): <span id="tdee-numero">-</span> kcal/día</p>
+            </div>
+
+            <div class="card">
+                <h3>Distribución de macronutrientes sugerida</h3>
+                <div class="barra-macros">
+                    <div class="macro-proteina" id="macro-proteina-bar"></div>
+                    <div class="macro-carbos" id="macro-carbos-bar"></div>
+                    <div class="macro-grasas" id="macro-grasas-bar"></div>
+                </div>
+                <ul class="lista-macros">
+                    <li><span class="punto proteina"></span> Proteína: <span id="macro-proteina-texto">-</span></li>
+                    <li><span class="punto carbos"></span> Carbohidratos: <span id="macro-carbos-texto">-</span></li>
+                    <li><span class="punto grasas"></span> Grasas: <span id="macro-grasas-texto">-</span></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Método del plato (raciones por comida)</h3>
+                <div class="plato" id="plato-visual"></div>
+                <ul class="lista-plato">
+                    <li><span class="punto verduras"></span> 50% Verduras y vegetales</li>
+                    <li><span class="punto proteina"></span> 25% Proteína (carne, pescado, legumbres, huevo)</li>
+                    <li><span class="punto carbos"></span> 25% Carbohidratos complejos (arroz, papa, avena)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Hidratación sugerida</h3>
+                <p class="numero-grande" id="agua-numero">-</p>
+                <p class="chico">Estimado según 35 ml por kg de peso corporal</p>
+            </div>
+
+            <div class="card informativa">
+                <h3>Horarios de comida: distintos enfoques</h3>
+                <p class="chico">No hay un único horario "correcto" — depende de cada persona. Estas son las
+                    opciones más comunes, con sus ventajas y puntos a tener en cuenta:</p>
+
+                <div class="enfoque">
+                    <h4>3 comidas principales</h4>
+                    <p><strong>A favor:</strong> simple de organizar, funciona bien con rutinas laborales
+                        tradicionales.</p>
+                    <p><strong>A tener en cuenta:</strong> algunas personas sienten más hambre entre comidas.</p>
+                </div>
+
+                <div class="enfoque">
+                    <h4>5-6 comidas pequeñas</h4>
+                    <p><strong>A favor:</strong> puede ayudar a controlar el apetito y mantener energía estable
+                        durante el día.</p>
+                    <p><strong>A tener en cuenta:</strong> requiere más planificación y preparación de comidas.</p>
+                </div>
+
+                <div class="enfoque">
+                    <h4>Ayuno intermitente (ej. 16:8)</h4>
+                    <p><strong>A favor:</strong> algunos estudios asocian esta práctica con mejoras metabólicas y
+                        simplicidad al reducir la cantidad de comidas.</p>
+                    <p><strong>A tener en cuenta:</strong> no es apto para todas las personas (embarazo, lactancia,
+                        antecedentes de trastornos alimentarios, diabetes sin supervisión médica); la evidencia
+                        científica sobre sus beneficios a largo plazo aún genera debate entre especialistas.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Actividad física sugerida</h3>
+                <p id="actividad-sugerida">-</p>
+            </div>
+            <div class="card">
+                <h3>Tip del día</h3>
+                <p id="tip-dia">-</p>
+            </div>
+            <div class="card" id="recetas-card">
+                <h3>Recetas sugeridas para vos</h3>
+                <div class="lista-recetas" id="recetas-lista"></div>
+            </div>
+
+        </section>
+        <section class="todas-recetas">
+            <h2>Mirá todas nuestras recetas sugeridas</h2>
+            <div class="lista-recetas" id="todas-recetas-lista"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Toda la información de esta calculadora está basada en fórmulas y lineamientos de conocimiento público y
+            con respaldo científico (OMS, ecuación de Mifflin-St Jeor, guías generales de nutrición). No reemplaza la
+            consulta con un médico, nutricionista o profesional de la salud.</p>
+        <p class="creditos">Desarrollado por Esteban Sarlengo</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
