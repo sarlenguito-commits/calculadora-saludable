@@ -28,3 +28,5 @@ Esta calculadora está basada en fórmulas y lineamientos de conocimiento públi
 la consulta con un médico o nutricionista.
 
 Desarrollado por Esteban Sarlengo
+
+Última revisión: 15/10/2026.
